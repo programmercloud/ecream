@@ -1,29 +1,32 @@
-/* ----- BASE ------ */
 "use strict";
 
-// get required selectors to maniplute menu toggle
+// get required selectors
+
 const navbar = document.querySelector(".navbar");
 const menuTogglersContainer = document.querySelector(".menu-togglers");
 const bxMenu = document.querySelector(".bx-menu");
 
-/* -- show/hide menu -- */
+// Show / hide menu
+
 menuTogglersContainer.addEventListener("click", () => {
   navbar.classList.toggle("show-nav");
 });
 
-/* -------- theme changing -------- */
+// Theme changing
+
 const themeTogglers = document.querySelector(".theme-togglers");
 const lightIcon = document.querySelector(".bxs-sun");
 const darkIcon = document.querySelector(".bxs-moon");
 
 var lightmode = localStorage.getItem("lightmode");
 
-// enable dark mode function
+// darkmode function
+
 const enableLightMode = () => {
-  // add class dark mode to the body
   document.body.classList.add("lightmode");
   localStorage.setItem("lightmode", "enabled");
-  // change theme toggle styles
+
+  //change theme styles
   lightIcon.style.display = "none";
   darkIcon.style.display = "block";
 };
@@ -32,17 +35,18 @@ if (lightmode && lightmode === "enabled") {
   enableLightMode();
 }
 
-// disable dark mode function
+//Disable darkmode
+
 const disableLightMode = () => {
-  // remove class dark mode from the body
   document.body.classList.remove("lightmode");
   localStorage.setItem("lightmode", null);
-  // change theme toggle styles
+
   lightIcon.style.display = "block";
   darkIcon.style.display = "none";
 };
 
-// active/deactive dark mode
+// Active / Deactive dark mode
+
 themeTogglers.addEventListener("click", () => {
   lightmode = localStorage.getItem("lightmode");
   if (!lightmode || lightmode !== "enabled") {
@@ -52,8 +56,9 @@ themeTogglers.addEventListener("click", () => {
   }
 });
 
-/* -- hide show hero buttons -- */
+// Show / hide hero buttons
 // delay before showing them
+
 const heroButtonsContainer = document.querySelector(".hero-btns-container");
 
 var delayTime = 1000;
